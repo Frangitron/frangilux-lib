@@ -1,11 +1,11 @@
-from enum import Enum
+from enum import auto, StrEnum
 
 from dataclasses import dataclass
 
 
-class InterpolationMode(Enum):
-    Linear = 1
-    Step = 2
+class InterpolationMode(StrEnum):
+    Linear = auto()
+    Step = auto()
 
 
 @dataclass

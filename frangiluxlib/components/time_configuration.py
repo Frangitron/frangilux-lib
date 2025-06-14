@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from enum import Enum
+from enum import auto, StrEnum
 
 
-class TimeConfigurationMode(Enum):
-    Milliseconds = 1
-    Tempo = 2
+class TimeConfigurationMode(StrEnum):
+    Milliseconds = auto()
+    Tempo = auto()
 
 
 @dataclass

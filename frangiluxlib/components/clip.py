@@ -1,9 +1,13 @@
 from dataclasses import dataclass, field
 
+import dataclasses_json
+from dataclasses_json import dataclass_json
+
 from frangiluxlib.components.clip_point import ClipPoint
 from frangiluxlib.components.time_configuration import TimeConfiguration
 
 
+@dataclass_json
 @dataclass
 class Clip:
     name: str
