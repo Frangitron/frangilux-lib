@@ -26,20 +26,3 @@ class Clip:
 
     def sort(self):
         self._points.sort(key=lambda x: x.time)
-
-    def play_value(self) -> float | None:
-        points = self.points()
-        if not points:
-            return None
-
-        # TODO do we want that ?
-        time = self.play_position % self.time_configuration.duration if self.play_position != self.time_configuration.duration else self.play_position
-
-        if time <= points[0].time:
-            return points[0].value
-
-        for i in range(len(points) - 1):
-            if points[i].time <= time <= points[i + 1].time:
-                return points[i].value + (points[i + 1].value - points[i].value) * (time - points[i].time) / (points[i + 1].time - points[i].time)
-
-        return points[-1].value
