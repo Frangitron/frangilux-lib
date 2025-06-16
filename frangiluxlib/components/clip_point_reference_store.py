@@ -1,6 +1,8 @@
 import json
 
 from frangiluxlib.components.clip_point import ClipPoint
+from frangiluxlib.reactive_channels import ReactiveChannels
+from pythonhelpers.reactive import Reactive
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
 
@@ -11,12 +13,11 @@ class ClipPointReferenceStore(metaclass=SingletonMetaclass):
     def __init__(self):
         self.references: dict[str, float] = {}
 
-    def references_names(self) -> list[str]:
-        return list(self.references.keys())
-
     def load(self) -> None:
         with open("references.json", "r") as f:
             self.references = json.load(f)
+
+        self._notify_observers()
 
     def save(self) -> None:
         with open("references.json", "w") as f:
@@ -43,3 +44,10 @@ class ClipPointReferenceStore(metaclass=SingletonMetaclass):
             raise ValueError(f"Reference name {name} already exists")
 
         self.references[name] = point.value
+        self._notify_observers()
+
+    def _notify_observers(self):
+        Reactive().notify_observers(
+            ReactiveChannels.References,
+            self.references
+        )
