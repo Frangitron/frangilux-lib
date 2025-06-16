@@ -1,4 +1,5 @@
 import json
+import os
 
 from frangiluxlib.components.clip_point.clip_point import ClipPoint
 from frangiluxlib.reactive_channels import ReactiveChannels
@@ -7,21 +8,22 @@ from pythonhelpers.reactive import Reactive
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
 
-# TODO make abstract ? Separate store/loader or rename ?
-# FIXME use a Singleton to hold one instance
+# FIXME is it a singleton ?
 class ClipPointReferenceStore(metaclass=SingletonMetaclass):
+    _filename = "references.json"
 
     def __init__(self):
         self.references: dict[str, float] = {}
 
     def load(self) -> None:
-        with open("references.json", "r") as f:
-            self.references = json.load(f)
+        if os.path.exists(self._filename):
+            with open(self._filename, "r") as f:
+                self.references = json.load(f)
 
-        self._notify_observers()
+            self._notify_observers()
 
     def save(self) -> None:
-        with open("references.json", "w") as f:
+        with open(self._filename, "w") as f:
             json.dump(self.references, f, indent=2)
 
     def get(self, point: ClipPoint) -> float:
