@@ -1,6 +1,6 @@
 import json
 
-from frangiluxlib.components.clip import Clip
+from frangiluxlib.components.clip.clip import Clip
 
 
 # TODO make abstract ? Separate store/loader or rename ?

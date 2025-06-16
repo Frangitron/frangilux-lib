@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 
 from dataclasses_json import dataclass_json
 
-from frangiluxlib.components.clip_point import ClipPoint
+from frangiluxlib.components.clip_point.clip_point import ClipPoint
 from frangiluxlib.components.time_configuration import TimeConfiguration
 
 

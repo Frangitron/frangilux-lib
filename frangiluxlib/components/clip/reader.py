@@ -1,6 +1,7 @@
-from frangiluxlib.components.clip import Clip
-from frangiluxlib.components.clip_point import ClipPoint
-from frangiluxlib.components.clip_point_reference_store import ClipPointReferenceStore
+from frangiluxlib.components.clip.clip import Clip
+from frangiluxlib.components.clip_point.clip_point import ClipPoint
+from frangiluxlib.components.clip_point.reference_store import ClipPointReferenceStore
+
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
 

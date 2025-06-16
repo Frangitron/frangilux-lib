@@ -1,7 +1,8 @@
 import json
 
-from frangiluxlib.components.clip_point import ClipPoint
+from frangiluxlib.components.clip_point.clip_point import ClipPoint
 from frangiluxlib.reactive_channels import ReactiveChannels
+
 from pythonhelpers.reactive import Reactive
 from pythonhelpers.singleton_metaclass import SingletonMetaclass
 
